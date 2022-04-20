@@ -58,5 +58,5 @@ class Bot:
                     print("Bot has been kicked")
                 
                 elif msg["command"] == "login_result":
-                    if msg["result"] != "success":
+                    if msg["result"] not in ["success", "account_created"]:
                         raise Exception("Authentication error")
