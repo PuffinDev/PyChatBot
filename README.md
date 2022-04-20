@@ -10,10 +10,13 @@ import os
 from dotenv import load_dotenv
 from pychatbot.bot import Bot
 
+# load the bot password from .env
 load_dotenv()
 
-bot = Bot("Example", os.getenv("BOT_PASSWORD"))
+# initialize the bot with username, password, server
+bot = Bot("ExampleBot", os.getenv("BOT_PASSWORD"), server=["localhost", 8888])
 
+# handle on_message event
 @bot.event
 def on_message(message):
     if message[0] != "!":
@@ -33,6 +36,8 @@ To run the example:
 - `python3 -m pip install requirements.txt`
 
 - Create a file called .env, and add thisline: `BOT_PASSWORD="switch_to_your_password"`
+
+- Change the `server` argument in `example_bot.py` to the server you want your bot to connect to
 
 - `python3 example_bot.py`
 
