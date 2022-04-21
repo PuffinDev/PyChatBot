@@ -3,27 +3,21 @@ PyChatBot is a bot client for PyChat.
 
 ## Example
 
-This bot responds with `Pong!` when a user types the message `!ping`
+This simple bot responds with `Pong!` when a user types the message `!ping`
 
 ```py
-import os
-from dotenv import load_dotenv
 from pychatbot.bot import Bot
 
-# load the bot password from .env
-load_dotenv()
-
 # initialize the bot with username, password, server
-bot = Bot("ExampleBot", os.getenv("BOT_PASSWORD"), server=["localhost", 8888])
+bot = Bot("ExampleBot", "BOT_PASSWORD", server=["localhost", 8888])
 
 # handle on_message event
 @bot.event
 def on_message(message):
-    if message[0] != "!":
-        return False
-    
-    command = message[1:]
-    if command == "ping":
+    message = message["message"]
+
+    # respond to a user typing !ping
+    if message == "!ping":
         bot.say("Pong!")
 
 bot.run()
