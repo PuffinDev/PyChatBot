@@ -49,7 +49,7 @@ class Bot:
                     continue
 
                 if msg["command"] == "message":
-                    self.on_message(msg["message"])
+                    self.on_message(msg)
 
                 elif msg["command"] == "banned":
                     print("Bot has been banned")
