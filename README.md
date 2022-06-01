@@ -29,7 +29,7 @@ To run the example:
 
 - `python3 -m pip install requirements.txt`
 
-- Create a file called .env, and add thisline: `BOT_PASSWORD="switch_to_your_password"`
+- Create a file called .env, and add this line: `BOT_PASSWORD="your_password_here"`
 
 - Change the `server` argument in `example_bot.py` to the server you want your bot to connect to
 
