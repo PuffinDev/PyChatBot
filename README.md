@@ -9,7 +9,9 @@ This simple bot responds with `Pong!` when a user types the message `!ping`
 from pychatbot.bot import Bot
 
 # initialize the bot with username, password, server
-bot = Bot("ExampleBot", "BOT_PASSWORD", server=["localhost", 8888])
+# it is best to use a .env file to store your bot password, but for the sake of simplicity it has been left out in this example.
+# however, example_bot.py does make use of env
+bot = Bot("ExampleBot", "password_goes_here", server=["localhost", 8888])
 
 # handle on_message event
 @bot.event
@@ -25,7 +27,7 @@ bot.run()
 
 
 ## Usage
-To run the example:
+To run the example_bot.py:
 
 - `python3 -m pip install requirements.txt`
 

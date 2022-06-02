@@ -16,9 +16,6 @@ class Bot:
     def run(self):
         self.init_socket()
 
-    def event(self, method):
-        setattr(self, method.__name__, method)
-
     def init_socket(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect(tuple(self.server_address))
@@ -26,6 +23,15 @@ class Bot:
         send(self.s, {"command": "login", "username": self.username, "password": self.password, "manual_call": False})
 
         self.receive_loop()
+
+    def event(self, method):
+        setattr(self, method.__name__, method)
+    
+    def on_message(self, message):
+        pass
+    
+    def on_user_join(self, message):
+        pass
 
     def say(self, message):
         send(self.s, {"command": "message", "message": message})
@@ -38,6 +44,9 @@ class Bot:
 
             if msg["command"] == "message":
                 self.on_message(msg)
+
+            elif msg["command"] == "user_join":
+                self.on_user_join(msg)
 
             elif msg["command"] == "banned":
                 print("Bot has been banned")

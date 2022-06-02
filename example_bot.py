@@ -1,10 +1,10 @@
 import os
-from dotenv import load_dotenv
+
 from pychatbot.bot import Bot
 
 load_dotenv()
 
-bot = Bot("Example", os.getenv("BOT_PASSWORD"))
+bot = Bot("ExampleBot", "example")
 
 @bot.event
 def on_message(message):
@@ -16,5 +16,11 @@ def on_message(message):
     command = message[1:]
     if command == "ping":
         bot.say("Pong!")
+
+@bot.event
+def on_user_join(message):
+    user = message["user"]
+    if user != bot.username:
+        bot.say(f"Welcome to the server @{user}!")
 
 bot.run()
